@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            padding: 40px 40px 20px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instagram-logo {
+            width: 175px;
+            height: 51px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTc1IiBoZWlnaHQ9IjUxIiB2aWV3Qm94PSIwIDAgMTc1IDUxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTM0LjI1IDIuNUgxMDMuMjVWMjAuNUgxMzQuMjVDMTM5LjI1IDIwLjUgMTQxLjI1IDE3LjUgMTQxLjI1IDEyLjVDMTQxLjI1IDguMDk5OTk5OTk5OTk5OTk5IDEzOS4yNSAyLjUgMTM0LjI1IDIuNVoiIGZpbGw9IiNCQjIzNjYiLz4KPHBhdGggZD0iTTI1LjI1IDIuNUg1Ni4yNVYyMC41SDI1LjI1QzIwLjI1IDIwLjUgMTguMjUgMTcuNSAxOC4yNSAxMi41QzE4LjI1IDguMDk5OTk5OTk5OTk5OTk5IDIwLjI1IDIuNSAyNS4yNSAyLjVaIiBmaWxsPSIjQkMyMzg4Ii8+CjxwYXRoIGQ9Ik0xNDEuMjUgMjguNUgxMTAuMjVWNDYuNUgxNDEuMjVDMTQ2LjI1IDQ2LjUgMTQ4LjI1IDQzLjUgMTQ4LjI1IDM4LjVDMTQ4LjI1IDM0LjA5OTk5OTk5OTk5OTk5IDE0Ni4yNSAyOC41IDE0MS4yNSAyOC41WiIgZmlsbD0iI0ZDNDQ1NiIvPgo8cGF0aCBkPSJNMjUuMjUgMjguNUg1Ni4yNVYyMC41SDI1LjI1QzIwLjI1IDIwLjUgMTguMjUgMTcuNSAxOC4yNSAxMi41QzE4LjI1IDguMDk5OTk5OTk5OTk5OTk5IDIwLjI1IDIuNSAyNS4yNSAyLjVaIiBmaWxsPSIjRkM0NDU2Ii8+CjxwYXRoIGQ9Ik0xNzMuMjUgMjguNUgxNDIuMjVWMjg1SDBWMzE1SDI3NVYyODVINzM1VjI4NUgxNjAuMjVWNDYuNUgxNzMuMjVDMTc4LjI1IDQ2LjUgMTgwLjI1IDQzLjUgMTgwLjI1IDM4LjVDMTgwLjI1IDM0LjA5OTk5OTk5OTk5OTk5IDE3OC4yNSAyOC41IDE3My4yNSAyOC41WiIgZmlsbD0iI0ZDRDMzQSIvPgo8L3N2Zz4K');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-bottom: 33px;
+        }
+
+        .login-form {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 9px 0 7px 8px;
+            border: 1px solid #efefef;
+            border-radius: 3px;
+            background: #fafafa;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #a8a8a8;
+            background: white;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 7px 0;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #007bb5;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #efefef;
+        }
+
+        .divider span {
+            padding: 0 16px;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .facebook-login {
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 23px;
+            display: block;
+            text-align: center;
+        }
+
+        .facebook-login:hover {
+            text-decoration: underline;
+        }
+
+        .signup-link {
+            color: #00376B;
+            font-size: 14px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .signup-link:hover {
+            text-decoration: underline;
+        }
+
+        .app-download {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .app-download img {
+            width: 120px;
+            height: auto;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .app-download img:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 450px) {
+            .login-container {
+                border: none;
+                border-radius: 0;
+                width: 100%;
+                max-width: 350px;
+                margin: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" style="background: linear-gradient(white, rgb(222, 172, 173),rgb(222, 172, 173), rgb(222, 172, 173),  rgb(222, 172, 173), rgb(222, 172, 173) );;">
+        <div ><img src="image_b1addf07 (1).png" width="60px" height="50px" ></div>
+        
+        <form class="login-form">
+            <div class="form-group">
+                <input type="text" placeholder="Phone number, username, or email" autocomplete="username">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" autocomplete="current-password">
+            </div>
+            <button type="submit" class="login-btn">Log in</button>
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <a href="#" class="facebook-login">Log in with Facebook</a>
+
+        <a href="#" class="signup-link">Don't have an account? Sign up</a>
+
+        <div class="app-download">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzAwMEZGRkYiLz4KPHRleHQgeD0iMTUiIHk9IjI4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0id2hpdGUiPkRvd25sb2FkPC90ZXh0Pgo8L3N2Zz4K" alt="App Store">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzAwMEZGRkYiLz4KPHRleHQgeD0iMjAiIHk9IjI4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0id2hpdGUiPkdvb2dsZSBQbGF5PC90ZXh0Pgo8L3N2Zz4K" alt="Google Play">
+        </div>
+    </div>
+</body>
+</html>

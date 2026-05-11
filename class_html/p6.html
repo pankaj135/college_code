@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+  
+</head>
+<body>
+    <img src="movie_img.jpg" height="300px" width="300px"> <br>
+
+    <font id="movie_name">dhurundhar</font><br>
+    <font id="collection">100 cr</font><br>
+    <!-- <font id ="c" -->
+  <script>
+        const movie_name = localStorage.getItem("movie_name");
+        console.log(movie_name);
+        document.getElementById("movie_name").innerHTML=movie_name;
+        
+    </script>
+</body>
+</html>
