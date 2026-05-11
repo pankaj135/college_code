@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>CMS</h2>
+        </div>
+        <nav>
+            <ul>
+                <li onclick="showSection('dashboard')">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li onclick="showSection('students')">
+                    <i class="fas fa-users"></i>
+                    <span>Student Details</span>
+                </li>
+                <li onclick="showSection('attendance')">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Attendance</span>
+                </li>
+                <li onclick="showSection('timetable')">
+                    <i class="fas fa-clock"></i>
+                    <span>Timetable</span>
+                </li>
+                <li onclick="showSection('results')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Results</span>
+                </li>
+                <li onclick="showSection('events')">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Events</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="user-profile">
+                <i class="fas fa-user"></i>
+                <span>Admin</span>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <h3>1250</h3>
+                        <p>Total Students</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <div>
+                        <h3>98%</h3>
+                        <p>Avg Attendance</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <h3>245</h3>
+                        <p>Top Performers</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <h3>12</h3>
+                        <p>Upcoming Events</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Details Section -->
+        <section id="students" class="section">
+            <div class="section-header">
+                <h2>Student Details</h2>
+                <button class="btn-add" onclick="openModal('studentModal')">
+                    <i class="fas fa-plus"></i> Add Student
+                </button>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Semester</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+                        <!-- Students will be populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Attendance Section -->
+        <section id="attendance" class="section">
+            <div class="section-header">
+                <h2>Attendance</h2>
+                <select id="attendanceClass" onchange="filterAttendance()">
+                    <option value="all">All Classes</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BBA">BBA</option>
+                    <option value="B.Tech">B.Tech</option>
+                </select>
+                <input type="date" id="attendanceDate" onchange="filterAttendance()">
+            </div>
+            <div class="attendance-grid" id="attendanceGrid">
+                <!-- Attendance data populated by JS -->
+            </div>
+        </section>
+
+        <!-- Timetable Section -->
+        <section id="timetable" class="section">
+            <div class="section-header">
+                <h2>Timetable</h2>
+                <select id="timetableClass" onchange="generateTimetable()">
+                    <option value="BCA-1">BCA Semester 1</option>
+                    <option value="BCA-2">BCA Semester 2</option>
+                    <option value="BBA-1">BBA Semester 1</option>
+                </select>
+            </div>
+            <div class="timetable-container">
+                <table class="timetable">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody">
+                        <!-- Timetable populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="section">
+            <div class="section-header">
+                <h2>Results</h2>
+                <input type="text" id="searchResult" placeholder="Search by student ID or name..." onkeyup="filterResults()">
+            </div>
+            <div class="results-grid" id="resultsGrid">
+                <!-- Results populated by JS -->
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="section">
+            <div class="section-header">
+                <h2>Events</h2>
+                <button class="btn-add" onclick="openModal('eventModal')">
+                    <i class="fas fa-plus"></i> Add Event
+                </button>
+            </div>
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events populated by JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Student Modal -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Student</h3>
+                <span class="close" onclick="closeModal('studentModal')">&times;</span>
+            </div>
+            <form id="studentForm">
+                <input type="hidden" id="studentId">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="studentName" required>
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <select id="studentCourse" required>
+                        <option value="BCA">BCA</option>
+                        <option value="BBA">BBA</option>
+                        <option value="B.Tech">B.Tech</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Semester</label>
+                    <input type="number" id="studentSemester" min="1" max="8" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="studentPhone">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="studentEmail">
+                </div>
+                <button type="submit">Save Student</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Event</h3>
+                <span class="close" onclick="closeModal('eventModal')">&times;</span>
+            </div>
+            <form id="eventForm">
+                <input type="hidden" id="eventId">
+                <div class="form-group">
+                    <label>Event Name</label>
+                    <input type="text" id="eventName" required>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" id="eventTime" required>
+                </div>
+                <div class="form-group">
+                    <label>Venue</label>
+                    <input type="text" id="eventVenue">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="eventDesc"></textarea>
+                </div>
+                <button type="submit">Save Event</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
